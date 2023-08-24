@@ -18,7 +18,7 @@ export default function NavHeader() {
         </h1>
         <nav className="HeaderNav">
             <li>
-                <Link to= "/project">Project</Link>
+                <Link to= "/thelma">Thelma</Link>
             </li>
             <li>
                 <Link to= "/spallian">Spallian</Link> 

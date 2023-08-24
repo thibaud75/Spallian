@@ -1,3 +1,33 @@
 .MovieDivMain{
     margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.MovieDivMain li {
+    list-style-type: none;
+}
+
+.MovieDivMain a {
+    text-decoration: none;
+    color: #262F4C;
+    font-size: 1.2em;
+}
+
+.MovieDivMain a:hover {
+  color: #968850;
+}
+
+.MovieDivInfo{
+    text-align: center;
+}
+
+.MovieNavContent{
+    text-align: center;
+}
+
+.CritiqueDiv{
+    margin: 8% 0;
 }

@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 
-const Comments = () => {
+const Casting = () => {
   const location = useLocation();
   const { from } = location.state;
 
@@ -9,4 +9,4 @@ const Comments = () => {
   return <div>{from}</div>;
 };
 
-export default Comments;
+export default Casting;

@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
+import "../Movie.css";
 
-const Critiques = () => {
+const PressReview = () => {
   const location = useLocation();
   const { from } = location.state;
 
@@ -10,9 +11,9 @@ const Critiques = () => {
     <div>
       {from.map((elem, index) => {
         return (
-          <div key={index}>
-            <p>Source: {elem.Source}</p>
-            <p>Rating: {elem.Value}</p>
+          <div key={index} className="CritiqueDiv">
+            <p><strong>Source: </strong>{elem.Source}</p>
+            <p><strong>Ratings: </strong>{elem.Value}</p>
           </div>
         );
       })}
@@ -20,4 +21,4 @@ const Critiques = () => {
   );
 };
 
-export default Critiques;
+export default PressReview;

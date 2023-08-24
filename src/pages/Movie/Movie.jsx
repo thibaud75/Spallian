@@ -38,26 +38,25 @@ const MMovie = () => {
       <div>
         {movieResult ? (
             <div className="MovieDivMain">
-                  <div className="div-image-movie">
+                  <div className="MovieDivImg">
                     <img
                       src={movieResult.Poster}
                       alt={movieResult.Poster}
-                      className="SingleMovie-image"
+                      className="MovieImg"
                     />
                   </div>
-                  <div className="div-right">
-                    <div className="infos-movie">
-                      <h2 className="SingleMovie-title">{movieResult.Title}</h2>
+                  <div className="MovieDivInfo">
+                      <h2 className="MovieTitle">{movieResult.Title}</h2>
   
-                      <p className="singleMovie-director">
-                        made by {movieResult.Director}
+                      <p className="MovieDirector">
+                        directed by <strong>{movieResult.Director}</strong>
                       </p>
-                      <div className="div-nav">
+                      <div className="MovieNav">
                         <nav>
                           <ul>
                             <li>
                               <NavLink
-                                to={`/movie/${id}/notes`}
+                                to={`/movie/${id}/casting`}
                                 state={{ from: movieResult.Actors }}
                               >
                                 Casting
@@ -65,18 +64,10 @@ const MMovie = () => {
                             </li>
                             <li>
                               <NavLink
-                                to={`/movie/${id}/critiques`}
+                                to={`/movie/${id}/press`}
                                 state={{ from: movieResult.Ratings }}
                               >
-                                Critiques presse
-                              </NavLink>
-                            </li>
-                            <li>
-                              <NavLink
-                                to={`/movie/${id}/comments`}
-                                state={{ from: movieResult.Plot }}
-                              >
-                                Other infos
+                                Press Review
                               </NavLink>
                             </li>
                             <li>
@@ -89,16 +80,16 @@ const MMovie = () => {
                             </li>
                           </ul>
                         </nav>
-                        <div className="div-nav-content" style={{ width: "80%" }}>
+                        <div className="MovieNavContent">
                           <Outlet />
                         </div>
                       </div>
-                    </div>
+                 
 
                   </div>
                 </div>
         ) : (
-          <div className="lds-spinner">
+          <div className="LdsSpinner">
             <div></div>
             <div></div>
             <div></div>

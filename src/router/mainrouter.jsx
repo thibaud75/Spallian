@@ -9,9 +9,8 @@ import Movies from "../pages/Movies/Movies"
 
 // Page MMovie
 import MMovie from "../pages/Movie/Movie";
-import Notes from "../pages/Movie/NavMovie/Notes";
-import Critiques from "../pages/Movie/NavMovie/Critiques";
-import Comments from "../pages/Movie/NavMovie/Comments";
+import Casting from "../pages/Movie/NavMovie/Casting";
+import PressReview from "../pages/Movie/NavMovie/PressReview";
 import Plot from "../pages/Movie/NavMovie/Plot";
 
 export default function MainRouter() {
@@ -28,9 +27,8 @@ export default function MainRouter() {
             </>
           }
         >
-          <Route path="notes" element={<Notes />} />
-          <Route path="critiques" element={<Critiques />} />
-          <Route path="comments" element={<Comments />} />
+          <Route path="casting" element={<Casting />} />
+          <Route path="press" element={<PressReview />} />
           <Route path="plot" element={<Plot />} />
         </Route>
             <Route path="*" element={<NotFound />} />

@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.MovieDivMain ul{
+    padding: 0;
+}
+
 .MovieDivMain li {
     list-style-type: none;
 }

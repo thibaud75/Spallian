@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import NavHeader from "../../components/NavHeader/NavHeader";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 import "./Movie.css";
 
@@ -88,22 +89,7 @@ const MMovie = () => {
 
                   </div>
                 </div>
-        ) : (
-          <div className="LdsSpinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
-        )}
+        ) : (<LoadingSpinner /> )}
       </div>
       </>
     );

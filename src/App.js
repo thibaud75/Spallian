@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavHeader from "./components/NavHeader/NavHeader";
+import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
 import "./styles.css";
 
 const App = () => {
@@ -76,7 +77,7 @@ const App = () => {
           placeholder="Search..."
         />
         <button onClick={handleSearch} disabled={loading}>
-          {loading ? "Loading..." : "Search"}
+          {loading ? <LoadingSpinner /> : "Search"}
         </button>
       </div>
     </>

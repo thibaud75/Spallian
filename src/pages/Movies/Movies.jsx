@@ -1,24 +1,29 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import NavHeader from "../../components/NavHeader/NavHeader";
+import "./Movies.css"
+
 
 const Movies = () => {
   const location = useLocation();
   const searchResults = location.state?.searchResults || [];
 
   return (
-    <div>
-      <h2 className="totalresults">
+    <>
+    <NavHeader />
+    <div className="MoviesDivMain">
+      <h2 className="MoviesTitle">
         {searchResults.length} film(s) trouvé(s) !
       </h2>
-      <div className="movies-container">
+      <div className="MoviesContainer">
         {searchResults.map((elem, index) => {
           return (
-            <div className="movies" key={index}>
+            <div className="MoviesDivImg" key={index}>
               <Link to={`/movie/${elem.imdbID}`}>
                 <img
                   src={elem.Poster}
                   alt={elem.Poster}
-                  className={`image-${index}` + " movie-img"}
+                  className={`MoviesImage-${index} Movies-img`}
                 />
               </Link>
             </div>
@@ -26,6 +31,7 @@ const Movies = () => {
         })}
       </div>
     </div>
+    </>
   );
 };
 

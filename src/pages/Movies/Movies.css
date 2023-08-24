@@ -1,0 +1,29 @@
+.MoviesTitle{
+    text-align: center;
+    margin-top: 3%;
+}
+
+.MoviesContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.MoviesDivMain{
+    width: 95%;
+    margin: auto;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.MoviesDivImg{
+    width: 18%;
+    margin: 1% 1%;
+}
+
+.Movies-img{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    margin: 4%;
+}

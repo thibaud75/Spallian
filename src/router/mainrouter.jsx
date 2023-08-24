@@ -8,11 +8,11 @@ import NotFound from "../pages/NotFound/NotFound"
 import Movies from "../pages/Movies/Movies"
 
 // Page MMovie
-import MMovie from "../pages/MMovie/MMovie";
-import Notes from "../pages/MMovie/NavMovie/Notes";
-import Critiques from "../pages/MMovie/NavMovie/Critiques";
-import Comments from "../pages/MMovie/NavMovie/Comments";
-import Plot from "../pages/MMovie/NavMovie/Plot";
+import MMovie from "../pages/Movie/Movie";
+import Notes from "../pages/Movie/NavMovie/Notes";
+import Critiques from "../pages/Movie/NavMovie/Critiques";
+import Comments from "../pages/Movie/NavMovie/Comments";
+import Plot from "../pages/Movie/NavMovie/Plot";
 
 export default function MainRouter() {
   return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import NavHeader from "./components/NavHeader/NavHeader";
 import "./styles.css";
 
 const App = () => {
@@ -60,19 +61,25 @@ const App = () => {
   }, [searchResults]);
 
   return (
-    <div className="container">
-      <p>Welcome Spallian ! Look for the movie you want here !</p>
-      <input
-        className="barre-de-recherche"
-        type="text"
-        value={searchTerm}
-        onChange={handleInputChange}
-        placeholder="Rechercher..."
-      />
-      <button onClick={handleSearch} disabled={loading}>
-        {loading ? "Chargement..." : "Rechercher"}
-      </button>
-    </div>
+    <>
+      <NavHeader />
+      <div className="container">
+        <p>
+          Click button or press Enter to get informations on the movie you want
+          !
+        </p>
+        <input
+          className="SearchBar"
+          type="text"
+          value={searchTerm}
+          onChange={handleInputChange}
+          placeholder="Search..."
+        />
+        <button onClick={handleSearch} disabled={loading}>
+          {loading ? "Loading..." : "Search"}
+        </button>
+      </div>
+    </>
   );
 };
 

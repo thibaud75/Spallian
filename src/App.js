@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavHeader from "./components/NavHeader/NavHeader";
 import LoadingSpinner from "./components/LoadingSpinner/LoadingSpinner";
+import ButtonSearch from "./components/ButtonSearch/ButtonSearch";
 import "./styles.css";
 
 const App = () => {
@@ -69,16 +70,18 @@ const App = () => {
           Click button or press Enter to get informations on the movie you want
           !
         </p>
-        <input
-          className="SearchBar"
-          type="text"
-          value={searchTerm}
-          onChange={handleInputChange}
-          placeholder="Search..."
-        />
-        <button onClick={handleSearch} disabled={loading}>
-          {loading ? <LoadingSpinner /> : "Search"}
-        </button>
+        <div className="SearchDiv">
+          <input
+            className="SearchBar"
+            type="text"
+            value={searchTerm}
+            onChange={handleInputChange}
+            placeholder="Search..."
+          />
+          <ButtonSearch onClick={handleSearch} disabled={loading}>
+            {loading ? <LoadingSpinner /> : "Search"}
+          </ButtonSearch>
+        </div>
       </div>
     </>
   );

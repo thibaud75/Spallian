@@ -10,6 +10,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
+  const [noMoviesFound, setNoMoviesFound] = useState(false);
   const navigate = useNavigate();
 
   const apiKey = "e8d2b17f";
@@ -50,7 +51,14 @@ const App = () => {
       console.log(allResults);
 
       if (allResults.length > 0)
-        navigate("/movies", { state: { searchResults: allResults } }); // Pass searchResults to the /movies route
+        navigate("/movies", {
+          state: { searchResults: allResults },
+        });
+      else {
+        setNoMoviesFound(true);
+      }
+
+      // Pass searchResults to the /movies route
     } catch (error) {
       console.error(error);
     } finally {
@@ -82,6 +90,9 @@ const App = () => {
             {loading ? <LoadingSpinner /> : "Search"}
           </ButtonSearch>
         </div>
+        {noMoviesFound && (
+          <p className="ErrorMoviesNotFound">No movies found!</p>
+        )}
       </div>
     </>
   );

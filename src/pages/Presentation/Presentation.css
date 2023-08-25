@@ -5,7 +5,7 @@
 }
 
 .PresentationDiv{
-    width: 60%;
+    width: 70%;
     margin: auto;
 }
 
@@ -14,7 +14,3 @@
     text-align: center;
 }
 
-.ProjectParagraph{
-    text-align: center;
-    font-size: 1.3em;
-}

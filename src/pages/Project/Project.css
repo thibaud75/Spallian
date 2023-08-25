@@ -5,6 +5,21 @@
 }
 
 .ProjectDiv{
-    width: 60%;
+    width: 70%;
     margin: auto;
+}
+
+.ProjectParagraph{
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.ProjectParagraph a{
+    text-decoration: none;
+    color: #262F4C;
+    font-weight: 600;
+}
+
+.ProjectParagraph a:hover{
+    color: #968850;
 }

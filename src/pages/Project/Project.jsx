@@ -10,7 +10,7 @@ const Project = () => {
       <NavHeader />
       <div className="ProjectDiv">
         <h1 className="Title TitleMain">Le projet</h1>
-        <p className="ProjectParagraph">Le but du projet était de créer une application React rapide qui fait appel à une API et en affiche les résultats. Le choix de l'API étant libre
+        <p className="ProjectParagraph">Le but du projet était de créer une application React rapide qui fait appel à une API et en affiche les résultats. Le choix de l'API étant libre,
         j'ai choisi une API de cinéma <Link to = "https://www.omdbapi.com/" target="_blank" rel="noopener noreferrer">Omdbapi</Link> car le cinéma est une de mes passions.</p>
 
         <p className="ProjectParagraph">J'ai utilisé React Router pour la navigation et ses outils comme Outlet ou useLocation, j'ai utilisé fetch pour réaliser mes requête API et non pas React Query, bien que j'ai lu la documentation, car je ne l'ai jamais utilisé et que

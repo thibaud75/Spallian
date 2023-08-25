@@ -16,7 +16,9 @@ const Presentation = () => {
           une application permettant de signaler les problèmes urbains tels que
           les éclairages publics défectueux, les dépôts sauvages, mais également
           les feux en forêt ou la pollution des rivières dans les espaces
-          naturels m'a rapidement interpellé.
+          naturels m'a rapidement interpellé. J'ai aimé la bienveillance de cet
+          échange, confirmé par l'email concernant le test technique que j'ai
+          reçu.
         </p>
         <p className="PresentationInfos">
           Lorsque j'ai commencé mes recherches d'alternance, je me suis fixé

@@ -68,6 +68,12 @@ const App = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   useEffect(() => {
     console.log(searchResults);
   }, [searchResults]);
@@ -87,6 +93,7 @@ const App = () => {
             type="text"
             value={searchTerm}
             onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
             placeholder="Search..."
           />
           <ButtonSearch onClick={handleSearch} disabled={loading}>

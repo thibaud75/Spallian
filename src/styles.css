@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  outline: 1px solid orangered;
+  /* outline: 1px solid orangered; */
 }
 
 body {
@@ -35,7 +35,6 @@ body {
   border-radius: 20px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 20%;
 }
 
 input{

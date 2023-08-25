@@ -92,8 +92,8 @@ const App = () => {
       <div className="container">
         <h1 className="HeaderTitle">Welcome Spallian !</h1>
         <p>
-          Click button or press Enter to get informations on the movie you want
-          !
+          Click search button or press Enter to get informations on the movie
+          you want !
         </p>
         <div className="SearchDiv">
           <input

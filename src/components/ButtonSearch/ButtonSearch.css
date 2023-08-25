@@ -1,4 +1,7 @@
 .ButtonSearch {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
     background-image: linear-gradient(0deg, #968850, #9aa3bbfa);
     color: #262F4C;
     border-radius: 20px;

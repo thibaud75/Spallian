@@ -5,9 +5,10 @@ import "./Movies.css"
 
 
 const Movies = () => {
+// We use useLocation from react router dom to get API data
   const location = useLocation();
-  const searchResults = location.state?.searchResults || [];
-
+  const searchResults = location.state?.searchResults;
+    
   return (
     <>
     <NavHeader />
@@ -16,18 +17,19 @@ const Movies = () => {
         {searchResults.length} movies found !
       </h2>
       <div className="MoviesContainer">
-        {searchResults.map((elem, index) => {
+        {searchResults.map((elem, index) => { // Map method on searchResults to display movie image
           return (
+            // We use Link to navigate on /movies route to get more details on a movie
             <div className="MoviesDivImg" key={index}>
-              <Link to={`/movie/${elem.imdbID}`}>
+              <Link to={`/movie/${elem.imdbID}`}>  
               <img
                     src={elem.Poster !== "N/A" ? elem.Poster : "https://thumbs.dreamstime.com/z/page-de-l-erreur-non-trouv%C3%A9e-%C3%A9chec-web-du-site-oh-l%C3%A0-conception-d-avertissement-internet-probl%C3%A8me-140342479.jpg?w=768"}
                     alt={elem.Title}
                     className={`MoviesImage-${index} Movies-img`}
                 />
 
-              </Link>
-            </div>
+              </Link> 
+            </div> 
           );
         })}
       </div>

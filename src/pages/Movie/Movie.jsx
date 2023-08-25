@@ -6,11 +6,13 @@ import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import "./Movie.css";
 
 const MMovie = () => {
+    // useParams to save id from url and use it in the API request
     const { id } = useParams();
     const apiKey = "e8d2b17f";
     const [movieResult, setMovieResult] = useState(null);
     const [imgAndName, setImgAndName] = useState([]);
   
+    // Function to do API call by movie id
     const getInfosMovie = () => {
       fetch(`https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`)
         .then((response) => response.json())
@@ -18,9 +20,7 @@ const MMovie = () => {
           setMovieResult(data);
           const copyPoster = [];
           copyPoster.push(data.Poster);
-          console.log(data.Poster, "test22");
           setImgAndName(copyPoster);
-          console.log(imgAndName[2]);
         })
         .catch((error) => {
           console.error("omdbapi", error);
@@ -56,6 +56,7 @@ const MMovie = () => {
                         <nav>
                           <ul>
                             <li>
+                            {/* Navlink and Outlet from react router dom to display movie details on the same page */}
                               <NavLink
                                 to={`/movie/${id}/casting`}
                                 state={{ from: movieResult.Actors }}
@@ -89,7 +90,7 @@ const MMovie = () => {
 
                   </div>
                 </div>
-        ) : (<LoadingSpinner /> )}
+        ) : (<LoadingSpinner /> )}   {/* Loading Spinner component when API is looking for data*/}
       </div>
       </>
     );

@@ -13,16 +13,20 @@ const App = () => {
   const [noMoviesFound, setNoMoviesFound] = useState(false);
   const navigate = useNavigate();
 
-  const apiKey = "e8d2b17f";
+  const apiKey = "e8d2b17f"; // My own key to do requests on omdbapi
 
+  // Function to set what user write in a useState
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
+  // Function to handle API request when user press Enter key or click on search button
   const handleSearch = async () => {
     setNoMoviesFound(false);
     setLoading(true);
 
+    // This request is usefull because omdbapi only shows 10 movies that match with enter value
+    // What we do here is to request the API to know how many movies we could get thanks to totalResult
     try {
       const searchResponse = await fetch(
         `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${apiKey}`
@@ -30,9 +34,13 @@ const App = () => {
       const searchData = await searchResponse.json();
       setTotalResults(parseInt(searchData.totalResults));
 
+      // Once we get totalResults we can divide by 10 the result and round up the number with Math.ceil
+      // Example : if totalresults = 108 we divide by 10 and we get 11 = we have to do 11 API request to
+      // get full results
       const numRequests = Math.ceil(parseInt(searchData.totalResults) / 10);
       const fetchPromises = [];
 
+      // Loop as many time as we need to get full results
       for (let page = 1; page <= numRequests; page++) {
         fetchPromises.push(
           fetch(
@@ -43,6 +51,7 @@ const App = () => {
         );
       }
 
+      // Concatenate all arrays into one and get rid of undefined values
       const results = await Promise.all(fetchPromises);
       const allResults = results
         .flat()
@@ -51,6 +60,7 @@ const App = () => {
       setSearchResults(allResults);
       console.log(allResults);
 
+      // If we found movies we navigate to movies and pass searchResults to the /movies route
       if (allResults.length > 0)
         navigate("/movies", {
           state: { searchResults: allResults },
@@ -59,8 +69,6 @@ const App = () => {
         setNoMoviesFound(true);
         setSearchTerm("");
       }
-
-      // Pass searchResults to the /movies route
     } catch (error) {
       console.error(error);
     } finally {

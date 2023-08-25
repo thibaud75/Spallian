@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import "./styles.css";
-import MainRouter from "./router/MainRouter";
+import MainRouter from "./router/mainrouter";
 import "./fonts/PingFangRegular.ttf";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

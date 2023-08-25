@@ -1,15 +1,15 @@
-.SpallianTitle{
+.PresentationTitle{
     text-align: center;
     font-size: 4em;
     margin-bottom: 6%;
 }
 
-.SpallianDiv{
+.PresentationDiv{
     width: 60%;
     margin: auto;
 }
 
-.SpallianInfos{
+.PresentationInfos{
     font-size: 1.3em;
     text-align: center;
 }

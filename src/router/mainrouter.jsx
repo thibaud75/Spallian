@@ -13,11 +13,11 @@ import Casting from "../pages/Movie/NavMovie/Casting";
 import PressReview from "../pages/Movie/NavMovie/PressReview";
 import Plot from "../pages/Movie/NavMovie/Plot";
 
-// Page Thelma
-import Thelma from "../pages/Thelma/Thelma";
+// Page Project
+import Project from "../pages/Project/Project";
 
-// Page Spallian
-import Spallian from "../pages/Spallian/Spallian";
+// Page Presentation
+import Presentation from "../pages/Presentation/Presentation";
 
 export default function MainRouter() {
   return (
@@ -30,8 +30,8 @@ export default function MainRouter() {
                 <Route path="press" element={<PressReview />} />
                 <Route path="plot" element={<Plot />} />
             </Route>
-            <Route path="/thelma" element={<Thelma />}/>
-            <Route path="/spallian" element={<Spallian />}/>
+            <Route path="/project" element={<Project />}/>
+            <Route path="/presentation" element={<Presentation />}/>
             <Route path="*" element={<NotFound />} />
         </Routes>
     </BrowserRouter>

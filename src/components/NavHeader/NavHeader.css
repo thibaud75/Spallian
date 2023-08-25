@@ -2,6 +2,8 @@ header{
 
     border-bottom: 1px solid black;
     padding: 1% 0;
+    background-image: url("../../assets/Images/Water2.webp");
+    background-size: cover; 
 }
 
 .HeaderDiv{
@@ -28,7 +30,7 @@ header{
 
 .HeaderNav a{
     text-decoration: none;
-    color:#262F4C;
+    color:#fff;
     font-weight: bold;
     font-size: 1.4em;
 }

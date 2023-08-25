@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./NavHeader.css";
 
+
 export default function NavHeader() {
 
   return (
@@ -13,15 +14,12 @@ export default function NavHeader() {
           src="https://www.spallian.com/wp-content/themes/spallian/assets/img/logo.svg"
         />
       </Link>
-        <h1 className="HeaderTitle">
-          Welcome Spallian !
-        </h1>
         <nav className="HeaderNav">
             <li>
-                <Link to= "/thelma">Thelma</Link>
+                <Link to= "/project">Project</Link>
             </li>
             <li>
-                <Link to= "/spallian">Spallian</Link> 
+                <Link to= "/presentation">Presentation</Link> 
              </li>
         </nav>
         </div>

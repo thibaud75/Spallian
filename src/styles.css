@@ -1,5 +1,6 @@
 *{
   box-sizing: border-box;
+  outline: 1px solid orangered;
 }
 
 body {
@@ -9,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #d9d5d5;
+  background-color: #fff;
   color: #262F4C;
 }
 
@@ -30,8 +31,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
+  background-color: #262f4cfa;
+  border-radius: 20px;
   padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 20%;

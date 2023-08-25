@@ -20,6 +20,7 @@ const App = () => {
   };
 
   const handleSearch = async () => {
+    setNoMoviesFound(false);
     setLoading(true);
 
     try {
@@ -56,6 +57,7 @@ const App = () => {
         });
       else {
         setNoMoviesFound(true);
+        setSearchTerm("");
       }
 
       // Pass searchResults to the /movies route
@@ -71,9 +73,10 @@ const App = () => {
   }, [searchResults]);
 
   return (
-    <>
+    <div className="AppDiv">
       <NavHeader />
       <div className="container">
+        <h1 className="HeaderTitle">Welcome Spallian !</h1>
         <p>
           Click button or press Enter to get informations on the movie you want
           !
@@ -94,7 +97,7 @@ const App = () => {
           <p className="ErrorMoviesNotFound">No movies found!</p>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

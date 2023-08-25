@@ -22,7 +22,7 @@ const Movies = () => {
               <Link to={`/movie/${elem.imdbID}`}>
               <img
                     src={elem.Poster !== "N/A" ? elem.Poster : "https://thumbs.dreamstime.com/z/page-de-l-erreur-non-trouv%C3%A9e-%C3%A9chec-web-du-site-oh-l%C3%A0-conception-d-avertissement-internet-probl%C3%A8me-140342479.jpg?w=768"}
-                    alt={elem.Poster}
+                    alt={elem.Title}
                     className={`MoviesImage-${index} Movies-img`}
                 />
 

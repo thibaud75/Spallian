@@ -1,5 +1,6 @@
 import React from "react";
 import NavHeader from "../../components/NavHeader/NavHeader";
+import "./NotFound.css"
 
 
 const NotFound = () => {

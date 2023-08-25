@@ -12,8 +12,14 @@ const PressReview = () => {
       {from.map((elem, index) => {
         return (
           <div key={index} className="CritiqueDiv">
-            <p><strong>Source: </strong>{elem.Source}</p>
-            <p><strong>Ratings: </strong>{elem.Value}</p>
+            <p>
+              <strong>Source: </strong>
+              {elem.Source}
+            </p>
+            <p>
+              <strong>Ratings: </strong>
+              {elem.Value}
+            </p>
           </div>
         );
       })}

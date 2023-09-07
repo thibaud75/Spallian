@@ -3,10 +3,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import App from "../App";
 import NotFound from "../pages/NotFound/NotFound";
 import Movies from "../pages/Movies/Movies";
-import MMovie from "../pages/Movie/Movie";
+
+// Page Movie
+import Movie from "../pages/Movie/Movie";
 import Casting from "../pages/Movie/NavMovie/Casting";
 import PressReview from "../pages/Movie/NavMovie/PressReview";
 import Plot from "../pages/Movie/NavMovie/Plot";
+
 import Project from "../pages/Project/Project";
 import Presentation from "../pages/Presentation/Presentation";
 
@@ -22,13 +25,16 @@ export default function MainRouter() {
           <Route
             path="/movie/:id"
             element={
-              <MMovie>
-                <Route path="casting" element={<Casting />} />
-                <Route path="press" element={<PressReview />} />
-                <Route path="plot" element={<Plot />} />
-              </MMovie>
+              <>
+                {" "}
+                <Movie />{" "}
+              </>
             }
-          />
+          >
+            <Route path="casting" element={<Casting />} />
+            <Route path="press" element={<PressReview />} />
+            <Route path="plot" element={<Plot />} />
+          </Route>
           <Route path="/project" element={<Project />} />
           <Route path="/presentation" element={<Presentation />} />
           <Route path="*" element={<NotFound />} />

@@ -23,17 +23,67 @@ const Movies = () => {
     setCurrentPage(parseInt(page) || 1);
   }, [page]);
 
-  const handlePageChange = (newPage) => {
+  const getStoredData = () => {
+    const storedData = localStorage.getItem(searchTerm);
+    return storedData ? JSON.parse(storedData) : null;
+  };
+
+  const handlePageChange = async (newPage) => {
     setCurrentPage(newPage);
+
+    const storedData = getStoredData();
+
+    if (storedData) {
+      const updatedData = {
+        ...storedData,
+        [currentPage]: data,
+      };
+      localStorage.setItem(searchTerm, JSON.stringify(updatedData));
+    } else {
+      const response = await fetch(
+        `https://www.omdbapi.com/?s=${searchTerm}&page=${currentPage}&type=movie&apikey=${apiKey}`
+      );
+      const newData = await response.json();
+
+      localStorage.setItem(
+        searchTerm,
+        JSON.stringify({ [currentPage]: newData })
+      );
+    }
 
     navigate(`/movies/${searchTerm}/${newPage}`);
   };
 
   const fetchData = async () => {
+    // Vérifiez d'abord si les données sont dans le localStorage
+    const storedData = getStoredData();
+
+    if (storedData && storedData[currentPage]) {
+      return storedData[currentPage];
+    }
+
+    // Si les données ne sont pas dans le localStorage ou pour cette page spécifique, effectuez la requête API
     const response = await fetch(
       `https://www.omdbapi.com/?s=${searchTerm}&page=${currentPage}&type=movie&apikey=${apiKey}`
     );
-    return response.json();
+    const newData = await response.json();
+
+    // Stockez les données dans le localStorage avec la clé correspondant à l'ID du film
+    if (newData && newData.Search) {
+      if (storedData) {
+        // Si les données existent déjà dans le localStorage, mettez à jour uniquement la page courante.
+        storedData[currentPage] = newData;
+        localStorage.setItem(searchTerm, JSON.stringify(storedData));
+      } else {
+        // Si les données n'existent pas encore dans le localStorage, créez une nouvelle entrée.
+        localStorage.setItem(
+          searchTerm,
+          JSON.stringify({ [currentPage]: newData })
+        );
+      }
+    }
+
+    return newData;
   };
 
   const { data, isLoading, isError } = useQuery(

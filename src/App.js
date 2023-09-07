@@ -133,22 +133,23 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [noMoviesFound, setNoMoviesFound] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1); // Ajout de la pagination
   const navigate = useNavigate();
   const queryClient = useQueryClient();
 
-  const apiKey = "e8d2b17f"; // Votre propre clé pour les requêtes omdbapi
+  const apiKey = "e8d2b17f";
 
-  const fetchData = async (searchTerm) => {
+  const fetchData = async (searchTerm, page) => {
     const searchResponse = await fetch(
-      `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${apiKey}`
+      `https://www.omdbapi.com/?s=${searchTerm}&type=movie&page=${page}&apikey=${apiKey}`
     );
     const searchData = await searchResponse.json();
     return searchData;
   };
 
   const { data, isLoading, isError } = useQuery(
-    ["search", searchTerm],
-    () => fetchData(searchTerm),
+    ["search", searchTerm, currentPage],
+    () => fetchData(searchTerm, currentPage),
     {
       enabled: false,
       onSuccess: (data) => {
@@ -158,11 +159,15 @@ const App = () => {
           const allResults = Search.filter(
             (item) => item !== null && item !== undefined
           );
-          setSearchResults(allResults); // Vous pouvez maintenant utiliser setSearchResults ici
+          setSearchResults(allResults);
 
           allResults.length > 0
-            ? navigate("/movies", {
-                state: { searchResults: allResults, allMovies: allMovies },
+            ? navigate(`/movies/${searchTerm}/${currentPage}`, {
+                state: {
+                  searchResults: allResults,
+                  allMovies: allMovies,
+                  searchTerm: searchTerm,
+                },
               })
             : (() => {
                 setNoMoviesFound(true);
@@ -179,8 +184,9 @@ const App = () => {
   const handleSearch = () => {
     setNoMoviesFound(false);
     setLoading(true);
-    queryClient.prefetchQuery(["search", searchTerm], () =>
-      fetchData(searchTerm)
+    setCurrentPage(1); // Réinitialiser la page lors d'une nouvelle recherche
+    queryClient.prefetchQuery(["search", searchTerm, 1], () =>
+      fetchData(searchTerm, 1)
     );
   };
 
@@ -198,7 +204,7 @@ const App = () => {
     <div className="AppDiv">
       <NavHeader />
       <div className="container">
-        <h1 className="HeaderTitle">Welcome Spallian !</h1>
+        <h1 className="HeaderTitle">Welcome Spallian!</h1>
         <p>
           Click search button or press Enter to get information on the movie you
           want!

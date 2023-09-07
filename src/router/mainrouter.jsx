@@ -18,7 +18,7 @@ export default function MainRouter() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
-          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieName/:page" element={<Movies />} />
           <Route
             path="/movie/:id"
             element={

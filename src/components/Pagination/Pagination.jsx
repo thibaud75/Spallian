@@ -3,23 +3,20 @@ import "./Pagination.css";
 
 const Pagination = ({ totalPages, currentPage, onPageChange }) => {
   const renderPagination = () => {
-    const buttons = [];
-
-    for (let page = 1; page <= totalPages; page++) {
+    return Array.from({ length: totalPages }).reduce((buttons, _, page) => {
       buttons.push(
         <button
-          key={page}
+          key={page + 1}
           className={`PaginationButton ${
-            page === currentPage ? "ActivePage" : ""
+            page + 1 === currentPage ? "ActivePage" : ""
           }`}
-          onClick={() => onPageChange(page)}
+          onClick={() => onPageChange(page + 1)}
         >
-          {page}
+          {page + 1}
         </button>
       );
-    }
-
-    return buttons;
+      return buttons;
+    }, []);
   };
 
   return <div className="PaginationContainer">{renderPagination()}</div>;

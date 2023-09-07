@@ -75,7 +75,6 @@ const Movies = () => {
       <NavHeader />
       <div className="MoviesDivMain">
         <h2 className="MoviesTitle">{allMovies} movies found!</h2>
-        <div className="MoviesContainer">{renderMovies()}</div>
         {!isLoading && (
           <Pagination
             totalPages={totalPages}
@@ -83,6 +82,7 @@ const Movies = () => {
             onPageChange={handlePageChange}
           />
         )}
+        <div className="MoviesContainer">{renderMovies()}</div>
       </div>
     </>
   );

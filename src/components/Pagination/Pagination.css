@@ -1,0 +1,11 @@
+.PaginationContainer button{
+    width: 3em;
+    height: 3em;
+    color: #968850;
+    background-color: #262f4cfa;
+}
+
+.ActivePage{
+    background-color: #968850 !important;
+    color: #262f4cfa !important;
+}

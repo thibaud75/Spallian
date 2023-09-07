@@ -1,39 +1,39 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { QueryClient, QueryClientProvider } from "react-query";
 import App from "../App";
-
-// Page not found
-import NotFound from "../pages/NotFound/NotFound"
-
-import Movies from "../pages/Movies/Movies"
-
-// Page Movie
+import NotFound from "../pages/NotFound/NotFound";
+import Movies from "../pages/Movies/Movies";
 import MMovie from "../pages/Movie/Movie";
 import Casting from "../pages/Movie/NavMovie/Casting";
 import PressReview from "../pages/Movie/NavMovie/PressReview";
 import Plot from "../pages/Movie/NavMovie/Plot";
-
-// Page Project
 import Project from "../pages/Project/Project";
-
-// Page Presentation
 import Presentation from "../pages/Presentation/Presentation";
+
+const queryClient = new QueryClient();
 
 export default function MainRouter() {
   return (
-    <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App />}/>
-            <Route path="/movies" element={<Movies />}/>
-            <Route path="/movie/:id" element={ <> <MMovie /> </>}>
+          <Route path="/" element={<App />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route
+            path="/movie/:id"
+            element={
+              <MMovie>
                 <Route path="casting" element={<Casting />} />
                 <Route path="press" element={<PressReview />} />
                 <Route path="plot" element={<Plot />} />
-            </Route>
-            <Route path="/project" element={<Project />}/>
-            <Route path="/presentation" element={<Presentation />}/>
-            <Route path="*" element={<NotFound />} />
+              </MMovie>
+            }
+          />
+          <Route path="/project" element={<Project />} />
+          <Route path="/presentation" element={<Presentation />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }

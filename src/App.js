@@ -143,7 +143,7 @@ const App = () => {
       `https://www.omdbapi.com/?s=${searchTerm}&type=movie&apikey=${apiKey}`
     );
     const searchData = await searchResponse.json();
-    return searchData.Search;
+    return searchData;
   };
 
   const { data, isLoading, isError } = useQuery(
@@ -153,19 +153,21 @@ const App = () => {
       enabled: false,
       onSuccess: (data) => {
         if (data) {
-          const allResults = data.filter(
+          const { totalResults, Search } = data;
+          const allMovies = totalResults;
+          const allResults = Search.filter(
             (item) => item !== null && item !== undefined
           );
           setSearchResults(allResults); // Vous pouvez maintenant utiliser setSearchResults ici
 
-          if (allResults.length > 0) {
-            navigate("/movies", {
-              state: { searchResults: allResults },
-            });
-          } else {
-            setNoMoviesFound(true);
-            setSearchTerm("");
-          }
+          allResults.length > 0
+            ? navigate("/movies", {
+                state: { searchResults: allResults, allMovies: allMovies },
+              })
+            : (() => {
+                setNoMoviesFound(true);
+                setSearchTerm("");
+              })();
         } else {
           setNoMoviesFound(true);
           setSearchTerm("");

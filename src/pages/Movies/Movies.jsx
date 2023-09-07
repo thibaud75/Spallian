@@ -6,13 +6,14 @@ import "./Movies.css";
 const Movies = () => {
   // We use useLocation from react router dom to get API data
   const location = useLocation();
-  const searchResults = location.state?.searchResults;
+  const searchResults = location.state.searchResults;
+  const allMovies = location.state.allMovies;
 
   return (
     <>
       <NavHeader />
       <div className="MoviesDivMain">
-        <h2 className="MoviesTitle">{searchResults.length} movies found !</h2>
+        <h2 className="MoviesTitle">{allMovies} movies found !</h2>
         <div className="MoviesContainer">
           {searchResults.map((elem, index) => {
             // Map method on searchResults to display movie image

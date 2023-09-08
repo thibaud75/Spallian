@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import NavHeader from "../../components/NavHeader/NavHeader";
 import Pagination from "../../components/Pagination/Pagination";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import "./Movies.css";
 
 const Movies = () => {
-  const { page } = useParams();
+  const { page, movieName } = useParams();
   const location = useLocation();
-  const [allMovies] = useState(location.state?.allMovies);
-  const [searchTerm] = useState(location.state?.searchTerm);
-  const queryClient = useQueryClient();
+  const [allMovies, setAllMovies] = useState(location.state?.allMovies);
+  const [searchTerm, setSearchTerm] = useState(location.state?.searchTerm);
+  console.log(allMovies + " " + searchTerm);
+
   const navigate = useNavigate();
 
   const apiKey = "e8d2b17f";
@@ -21,7 +22,17 @@ const Movies = () => {
 
   useEffect(() => {
     setCurrentPage(parseInt(page) || 1);
+    console.log(page);
   }, [page]);
+
+  const getTotalResults =
+    location.state?.allMovies ||
+    JSON.parse(localStorage.getItem(movieName))[1].totalResults;
+
+  useEffect(() => {
+    setSearchTerm(movieName);
+    setAllMovies(getTotalResults);
+  }, []);
 
   const getStoredData = () => {
     const storedData = localStorage.getItem(searchTerm);
@@ -40,6 +51,7 @@ const Movies = () => {
       };
       localStorage.setItem(searchTerm, JSON.stringify(updatedData));
     } else {
+      console.log(searchTerm);
       const response = await fetch(
         `https://www.omdbapi.com/?s=${searchTerm}&page=${currentPage}&type=movie&apikey=${apiKey}`
       );
@@ -55,27 +67,22 @@ const Movies = () => {
   };
 
   const fetchData = async () => {
-    // Vérifiez d'abord si les données sont dans le localStorage
     const storedData = getStoredData();
 
     if (storedData && storedData[currentPage]) {
       return storedData[currentPage];
     }
 
-    // Si les données ne sont pas dans le localStorage ou pour cette page spécifique, effectuez la requête API
     const response = await fetch(
       `https://www.omdbapi.com/?s=${searchTerm}&page=${currentPage}&type=movie&apikey=${apiKey}`
     );
     const newData = await response.json();
 
-    // Stockez les données dans le localStorage avec la clé correspondant à l'ID du film
     if (newData && newData.Search) {
       if (storedData) {
-        // Si les données existent déjà dans le localStorage, mettez à jour uniquement la page courante.
         storedData[currentPage] = newData;
         localStorage.setItem(searchTerm, JSON.stringify(storedData));
       } else {
-        // Si les données n'existent pas encore dans le localStorage, créez une nouvelle entrée.
         localStorage.setItem(
           searchTerm,
           JSON.stringify({ [currentPage]: newData })

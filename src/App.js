@@ -22,16 +22,18 @@ const App = () => {
       `https://www.omdbapi.com/?s=${searchTerm}&type=movie&page=${page}&apikey=${apiKey}`
     );
     const searchData = await searchResponse.json();
+
     return searchData;
   };
 
-  const { data, isLoading, isError } = useQuery(
+  const { isLoading } = useQuery(
     ["search", searchTerm, currentPage],
     () => fetchData(searchTerm, currentPage),
     {
       enabled: false,
       onSuccess: (data) => {
-        if (data) {
+        debugger;
+        if (data.Response !== "False") {
           const { totalResults, Search } = data;
           const allMovies = totalResults;
           const allResults = Search.filter(
